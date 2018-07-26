@@ -16,11 +16,12 @@ public class Hooks extends RyanairBasePage {
     @Before
     public void setUp(){
 
-        System.setProperty("webdriver.gecko.driver","C:\\Program Files (x86)/geckodriver.exe");
+       // System.setProperty("webdriver.firefox.marionette", "C:\\Program Files/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src\\main\\resources\\geckodriver.exe");
         base.Driver  = new FirefoxDriver();
-        base.Driver.manage().window().maximize();
-        String baseHomePage = "www.ryanair.com/ie/en";
-        base.Driver.navigate().to("https://" + baseHomePage);
+       // base.Driver.manage().window().maximize();
+
+       base.Driver.get("http://www.ryanair.com/ie/en");
 
     }
 

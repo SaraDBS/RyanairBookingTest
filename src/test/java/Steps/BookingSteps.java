@@ -22,6 +22,7 @@ public class BookingSteps extends RyanairBasePage {
 
     @Given("^I make a booking from \"([^\"]*)\" to \"([^\"]*)\" on \"([^\"]*)\" for \"([^\"]*)\" adults and \"([^\"]*)\" child$")
     public void iMakeABookingFromToOnForAdultsAndChild(String from, String to, String dateOfTrip, int nAdults, int nChildren) {
+        base.Driver.navigate().to("http://www.ryanair.com/ie/en");
 
         String day = dateOfTrip.split("/")[0];
         String month = dateOfTrip.split("/")[1];
@@ -31,7 +32,8 @@ public class BookingSteps extends RyanairBasePage {
         farePage.selectFlightAndPrice();
         seatsPage.selectSeats(nAdults+nChildren);
         seatsPage.dismissAddOnsAndClickCheckout();
-        seatsPage.dismissAddOnsAndClickCheckout();
+        // Hadd dismissAddOns twice!
+        //seatsPage.dismissAddOnsAndClickCheckout();
         signUpPage.signUpAndSubmit();
         checkoutPage.fillPassengerDetails(nAdults+nChildren);
 
